@@ -3,41 +3,50 @@ require 'busted.runner'()
 
 describe('Bathroom motion sensor', function()
 
-  describe('detects motion at night', function()
+  local script_name = 'script_device_bathroommotion.lua'
+  local light_on_threshold_lux = 10
 
-    it('turns on the light', function()
-      commandArray = domotest('script_device_bathroommotion.lua', {
+  describe('detects motion', function()
+
+    describe('ambient light level is bright', function()
+
+      commandArray = domotest(script_name, {
         devicechanged = { ['Bathroom Motion'] = 'On' },
-        timeofday = { ['Nighttime'] = true }
+        otherdevices = { ['Bathroom Lux'] = 11 },
+        uservariables = { ['Bathroom Light On Lux'] = light_on_threshold_lux }
       })
 
-      assert.are.same({
-        ['Bathroom Lights'] = 'On'
-      }, commandArray)
+      it('does nothing', function()
+        assert.are.same({}, commandArray)
+      end)
+
     end)
 
-  end)
+    describe('ambient light level is dim', function()
 
-  describe('detects motion during the day', function()
-
-    it('does nothing', function()
-      commandArray = domotest('script_device_bathroommotion.lua', {
+      commandArray = domotest(script_name, {
         devicechanged = { ['Bathroom Motion'] = 'On' },
-        timeofday = { ['Nighttime'] = false }
+        otherdevices = { ['Bathroom Lux'] = 9 },
+        uservariables = { ['Bathroom Light On Lux'] = light_on_threshold_lux }
       })
 
-      assert.are.same({}, commandArray)
+      it('turns on the lights', function()
+        assert.are.same({
+          ['Bathroom Lights'] = 'On'
+        }, commandArray)
+      end)
+
     end)
 
   end)
 
   describe('reports no motion', function()
 
-    it('turns off the light', function()
-      commandArray = domotest('script_device_bathroommotion.lua', {
-        devicechanged = { ['Bathroom Motion'] = 'Off' }
-      })
+    commandArray = domotest(script_name, {
+      devicechanged = { ['Bathroom Motion'] = 'Off' }
+    })
 
+    it('turns off the lights', function()
       assert.are.same({
         ['Bathroom Lights'] = 'Off'
       }, commandArray)
