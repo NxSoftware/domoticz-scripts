@@ -44,7 +44,7 @@ describe('When the bathroom motion sensor', function()
         otherdevices_svalues = { ['Bathroom Lux'] = '9' }
       })
 
-      it('does nothing', function()
+      it('nothing happens', function()
         assert.are.same({}, commandArray)
       end)
 
@@ -80,6 +80,22 @@ describe('When the bathroom motion sensor', function()
         assert.are.same({}, commandArray)
       end)
 
+    end)
+
+  end)
+
+  describe('reports nothing', function()
+
+    describe('when the lights are on', function ()
+      commandArray = domotest(script_name, {
+        otherdevices = { ['Bathroom Lights'] = 'On' },
+        otherdevices_svalues = { ['Bathroom Lux'] = '9' },
+        uservariables = { ['Bathroom Light On Lux'] = light_on_threshold_lux }
+      })
+
+      it('nothing happens', function()
+        assert.are.same({}, commandArray)
+      end)
     end)
 
   end)

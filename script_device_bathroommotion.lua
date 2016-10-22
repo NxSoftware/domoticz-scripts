@@ -9,8 +9,10 @@ if bathroom_motion == 'On' then
   if bathroom_lux <= on_threshold then
     desired_lights_state = 'On'
   end
-elseif otherdevices['Bathroom Lights'] == 'On' then
-  desired_lights_state = 'Off'
+elseif bathroom_motion == 'Off' then
+  if otherdevices['Bathroom Lights'] == 'On' then
+    desired_lights_state = 'Off'
+  end
 end
 
 if desired_lights_state then
