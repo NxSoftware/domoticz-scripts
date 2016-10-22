@@ -55,9 +55,17 @@ context('When the washing machine energy usage', function()
       })
 
       it('the tracking variable is RESET', function()
-        assert.are.same({
-          ['Variable:Washing Machine Active'] = 'Off'
-        }, commandArray)
+        assert.are.same(
+          'Off',
+          commandArray['Variable:Washing Machine Active']
+        )
+      end)
+
+      it('a notification is sent', function()
+        assert.are.same(
+          '#Your washing has finished',
+          commandArray['SendNotification']
+        )
       end)
     end)
 

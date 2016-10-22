@@ -6,23 +6,21 @@ if energy_usage == nil then
   return commandArray
 end
 
-local tracking_state = uservariables['Washing Machine Active']
+local washing_machine_state_id = 'Washing Machine Active'
+local tracking_state = uservariables[washing_machine_state_id]
 local start_tracking_threshold = 10
 local stop_tracking_threshold = 2
-local desired_tracking_state = nil
+local update_command = 'Variable:' .. washing_machine_state_id
 
 if tracking_state == 'Off' then
   if energy_usage > start_tracking_threshold then
-    desired_tracking_state = 'On'
+    commandArray[update_command] = 'On'
   end
 elseif tracking_state == 'On' then
   if energy_usage <= stop_tracking_threshold then
-    desired_tracking_state = 'Off'
+    commandArray[update_command] = 'Off'
+    commandArray['SendNotification'] = '#Your washing has finished'
   end
-end
-
-if desired_tracking_state then
-  commandArray['Variable:Washing Machine Active'] = desired_tracking_state
 end
 
 return commandArray
