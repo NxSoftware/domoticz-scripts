@@ -4,7 +4,7 @@ require 'busted.runner'()
 describe('When the bathroom motion sensor', function()
 
   local script_name = 'script_device_bathroommotion.lua'
-  local light_on_threshold_lux = 10
+  local light_on_threshold_lux = '10'
 
   describe('detects motion', function()
 
@@ -34,6 +34,18 @@ describe('When the bathroom motion sensor', function()
         assert.are.same({
           ['Bathroom Lights'] = 'On'
         }, commandArray)
+      end)
+
+    end)
+
+    describe('a missing uservariable is defaulted', function()
+      commandArray = domotest(script_name, {
+        devicechanged = { ['Bathroom Motion'] = 'On' },
+        otherdevices = { ['Bathroom Lux'] = 9 }
+      })
+
+      it('does nothing', function()
+        assert.are.same({}, commandArray)
       end)
 
     end)

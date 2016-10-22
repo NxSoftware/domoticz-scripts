@@ -1,6 +1,6 @@
 commandArray = {}
 
-local on_threshold = uservariables['Bathroom Light On Lux']
+local on_threshold = tonumber(uservariables['Bathroom Light On Lux'] or 0)
 local bathroom_motion = devicechanged['Bathroom Motion']
 local desired_lights_state = nil
 
