@@ -8,8 +8,8 @@ end
 
 local washing_machine_state_id = 'Washing Machine Active'
 local tracking_state = uservariables[washing_machine_state_id]
-local start_tracking_threshold = 10
-local stop_tracking_threshold = 2
+local start_tracking_threshold = 4
+local stop_tracking_threshold = 1.5
 local update_command = 'Variable:' .. washing_machine_state_id
 
 if tracking_state == 'Off' then

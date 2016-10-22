@@ -4,14 +4,12 @@ require 'busted.runner'()
 context('When the washing machine energy usage', function()
 
   local script_name = 'script_device_washingmachine.lua'
-  local washing_start_tracking_threshold = 10
-  local washing_finish_tracking_trehshold = 2
 
   describe('is above the tracking threshold', function()
 
     describe('and the cycle is already being tracked', function()
       commandArray = domotest(script_name, {
-        devicechanged = { ['Washing Machine (W)_Utility'] = 11 },
+        devicechanged = { ['Washing Machine (W)_Utility'] = 4.1 },
         uservariables = { ['Washing Machine Active'] = 'On' }
       })
 
@@ -22,7 +20,7 @@ context('When the washing machine energy usage', function()
 
     describe('and the cycle is not being tracked', function()
       commandArray = domotest(script_name, {
-        devicechanged = { ['Washing Machine (W)_Utility'] = 11 },
+        devicechanged = { ['Washing Machine (W)_Utility'] = 4.1 },
         uservariables = { ['Washing Machine Active'] = 'Off' }
       })
 
@@ -39,7 +37,7 @@ context('When the washing machine energy usage', function()
 
     describe('and the cycle is not being tracked', function()
       commandArray = domotest(script_name, {
-        devicechanged = { ['Washing Machine (W)_Utility'] = 2 },
+        devicechanged = { ['Washing Machine (W)_Utility'] = 1.4 },
         uservariables = { ['Washing Machine Active'] = 'Off' }
       })
 
@@ -50,7 +48,7 @@ context('When the washing machine energy usage', function()
 
     describe('and the cycle is being tracked', function()
       commandArray = domotest(script_name, {
-        devicechanged = { ['Washing Machine (W)_Utility'] = 2 },
+        devicechanged = { ['Washing Machine (W)_Utility'] = 1.4 },
         uservariables = { ['Washing Machine Active'] = 'On' }
       })
 
