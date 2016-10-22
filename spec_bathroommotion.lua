@@ -42,14 +42,32 @@ describe('When the bathroom motion sensor', function()
 
   describe('reports no motion', function()
 
-    commandArray = domotest(script_name, {
-      devicechanged = { ['Bathroom Motion'] = 'Off' }
-    })
+    describe('and the lights are on', function()
 
-    it('turn off the lights', function()
-      assert.are.same({
-        ['Bathroom Lights'] = 'Off'
-      }, commandArray)
+      commandArray = domotest(script_name, {
+        devicechanged = { ['Bathroom Motion'] = 'Off' },
+        otherdevices = { ['Bathroom Lights'] = 'On' }
+      })
+
+      it('turn off the lights', function()
+        assert.are.same({
+          ['Bathroom Lights'] = 'Off'
+        }, commandArray)
+      end)
+
+    end)
+
+    describe('and the lights are off', function()
+
+      commandArray = domotest(script_name, {
+        devicechanged = { ['Bathroom Motion'] = 'Off' },
+        otherdevices = { ['Bathroom Lights'] = 'Off' }
+      })
+
+      it('nothing happens', function()
+        assert.are.same({}, commandArray)
+      end)
+
     end)
 
   end)
