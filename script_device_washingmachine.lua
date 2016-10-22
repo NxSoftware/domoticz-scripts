@@ -1,6 +1,6 @@
 commandArray = {}
 
-local energy_usage = devicechanged['Washing Machine Energy']
+local energy_usage = devicechanged['Washing Machine (W)_Utility']
 
 if energy_usage == nil then
   return commandArray

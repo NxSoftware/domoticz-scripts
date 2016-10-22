@@ -11,7 +11,7 @@ context('When the washing machine energy usage', function()
 
     describe('and the cycle is already being tracked', function()
       commandArray = domotest(script_name, {
-        devicechanged = { ['Washing Machine Energy'] = 11 },
+        devicechanged = { ['Washing Machine (W)_Utility'] = 11 },
         uservariables = { ['Washing Machine Active'] = 'On' }
       })
 
@@ -22,7 +22,7 @@ context('When the washing machine energy usage', function()
 
     describe('and the cycle is not being tracked', function()
       commandArray = domotest(script_name, {
-        devicechanged = { ['Washing Machine Energy'] = 11 },
+        devicechanged = { ['Washing Machine (W)_Utility'] = 11 },
         uservariables = { ['Washing Machine Active'] = 'Off' }
       })
 
@@ -39,7 +39,7 @@ context('When the washing machine energy usage', function()
 
     describe('and the cycle is not being tracked', function()
       commandArray = domotest(script_name, {
-        devicechanged = { ['Washing Machine Energy'] = 2 },
+        devicechanged = { ['Washing Machine (W)_Utility'] = 2 },
         uservariables = { ['Washing Machine Active'] = 'Off' }
       })
 
@@ -50,7 +50,7 @@ context('When the washing machine energy usage', function()
 
     describe('and the cycle is being tracked', function()
       commandArray = domotest(script_name, {
-        devicechanged = { ['Washing Machine Energy'] = 2 },
+        devicechanged = { ['Washing Machine (W)_Utility'] = 2 },
         uservariables = { ['Washing Machine Active'] = 'On' }
       })
 
