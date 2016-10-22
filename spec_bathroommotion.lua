@@ -12,7 +12,7 @@ describe('When the bathroom motion sensor', function()
 
       commandArray = domotest(script_name, {
         devicechanged = { ['Bathroom Motion'] = 'On' },
-        otherdevices = { ['Bathroom Lux'] = '11' },
+        otherdevices_svalues = { ['Bathroom Lux'] = '11' },
         uservariables = { ['Bathroom Light On Lux'] = light_on_threshold_lux }
       })
 
@@ -26,7 +26,7 @@ describe('When the bathroom motion sensor', function()
 
       commandArray = domotest(script_name, {
         devicechanged = { ['Bathroom Motion'] = 'On' },
-        otherdevices = { ['Bathroom Lux'] = '9' },
+        otherdevices_svalues = { ['Bathroom Lux'] = '9' },
         uservariables = { ['Bathroom Light On Lux'] = light_on_threshold_lux }
       })
 
@@ -41,7 +41,7 @@ describe('When the bathroom motion sensor', function()
     describe('a missing uservariable is defaulted', function()
       commandArray = domotest(script_name, {
         devicechanged = { ['Bathroom Motion'] = 'On' },
-        otherdevices = { ['Bathroom Lux'] = '9' }
+        otherdevices_svalues = { ['Bathroom Lux'] = '9' }
       })
 
       it('does nothing', function()
