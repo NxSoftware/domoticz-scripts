@@ -35,7 +35,7 @@ describe('When the BEDTIME device', function()
     }
 
     describe('and the LIVING ROOM LIGHT is OFF', function()
-      commands['otherdevices'] = { ['Living Room Light'] = 'Off' }
+      commands['otherdevices_svalues'] = { ['Living Room Light'] = '0' }
       commandArray = domotest(script_name, commands)
 
       it("don't change the living room light state", function()
@@ -44,7 +44,7 @@ describe('When the BEDTIME device', function()
     end)
 
     describe('and the DINING AREA LIGHT is OFF', function()
-      commands['otherdevices'] = { ['Dining Area Light'] = 'Off' }
+      commands['otherdevices_svalues'] = { ['Dining Area Light'] = '0' }
       commandArray = domotest(script_name, commands)
 
       it("don't change the dining area light state", function()
@@ -53,7 +53,7 @@ describe('When the BEDTIME device', function()
     end)
 
     describe('and the LIVING ROOM LIGHT is ON', function()
-      commands['otherdevices'] = { ['Living Room Light'] = 'On' }
+      commands['otherdevices_svalues'] = { ['Living Room Light'] = '100' }
       commandArray = domotest(script_name, commands)
 
       it('immediately set the brightness to 15%', function()
@@ -66,7 +66,7 @@ describe('When the BEDTIME device', function()
     end)
 
     describe('and the DINING AREA LIGHT is ON', function()
-      commands['otherdevices'] = { ['Dining Area Light'] = 'On' }
+      commands['otherdevices_svalues'] = { ['Dining Area Light'] = '37' }
       commandArray = domotest(script_name, commands)
 
       it('immediately set the brightness to 15%', function()

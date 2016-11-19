@@ -5,10 +5,12 @@ if devicechanged['Bedtime'] ~= 'On' then
 end
 
 local living_room_light_id = 'Living Room Light'
+local living_room_light_state = tonumber(otherdevices_svalues[living_room_light_id]) or 0
 local dining_area_light_id = 'Dining Area Light'
+local dining_area_light_state = tonumber(otherdevices_svalues[dining_area_light_id]) or 0
 local landing_light_id = 'Landing Light'
 
-if otherdevices[living_room_light_id] == 'On' then
+if living_room_light_state > 0 then
   commandArray[1] = {
     [living_room_light_id] = 'Set Level 15'
   }
@@ -17,7 +19,7 @@ if otherdevices[living_room_light_id] == 'On' then
   }
 end
 
-if otherdevices[dining_area_light_id] == 'On' then
+if dining_area_light_state > 0 then
   commandArray[3] = {
     [dining_area_light_id] = 'Set Level 15'
   }
