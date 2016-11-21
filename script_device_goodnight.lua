@@ -9,6 +9,7 @@ local living_room_light_state = tonumber(otherdevices_svalues[living_room_light_
 local dining_area_light_id = 'Dining Area Light'
 local dining_area_light_state = tonumber(otherdevices_svalues[dining_area_light_id]) or 0
 local landing_light_id = 'Landing Light'
+local top_landing_light_id = 'Top Landing Light'
 
 if living_room_light_state > 0 then
   commandArray[1] = {
@@ -33,6 +34,12 @@ commandArray[5] = {
 }
 commandArray[6] = {
   [landing_light_id] = 'Off AFTER 60'
+}
+commandArray[7] = {
+  [top_landing_light_id] = 'Set Level 50'
+}
+commandArray[8] = {
+  [top_landing_light_id] = 'Off AFTER 60'
 }
 
 return commandArray

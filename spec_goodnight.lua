@@ -17,8 +17,7 @@ end)
 
 describe('When the BEDTIME device', function()
 
-  describe('is off', function()
-
+  describe('turns off', function()
     commandArray = domotest(script_name, {
       devicechanged = { ['Bedtime'] = 'Off' }
     })
@@ -84,6 +83,14 @@ describe('When the BEDTIME device', function()
 
     it('turn off the LANDING light after 60 seconds', function()
       assert.is.equal('Off AFTER 60', commandArray[6]['Landing Light'])
+    end)
+
+    it('set the TOP LANDING LIGHT to 50%', function()
+      assert.is.equal('Set Level 50', commandArray[7]['Top Landing Light'])
+    end)
+
+    it('turn off the TOP LANDING LIGHT after 60 seconds', function()
+      assert.is.equal('Off AFTER 60', commandArray[8]['Top Landing Light'])
     end)
 
   end)
