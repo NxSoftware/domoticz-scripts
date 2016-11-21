@@ -1,7 +1,7 @@
 require 'domotest'
 require 'busted.runner'()
 
-local script_name = 'DEMO_script_device_landingmotion.lua'
+local script_name = 'script_device_landingmotion.lua'
 local commands = {}
 
 describe('When neither BOTTOM STAIRS SENSOR nor LANDING SENSOR reports a change', function()
