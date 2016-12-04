@@ -15,15 +15,20 @@ end
 
 local bottom_stairs_motion = get_current_motion('Bottom Stairs Motion')
 local landing_motion = get_current_motion('Landing Motion')
+local landing_lux = tonumber(otherdevices_svalues['Landing Lux'])
+local on_threshold = tonumber(uservariables['Landing Light On Lux'] or 0)
+
+local function there_is_motion()
+  return bottom_stairs_motion == 'On' or landing_motion == 'On'
+end
 
 if landing_light_is_on() then
   if bottom_stairs_motion == 'Off'
   and landing_motion == 'Off' then
     commandArray['Landing Light'] = 'Off'
   end
-else
-  if bottom_stairs_motion == 'On'
-  or landing_motion == 'On' then
+elseif there_is_motion() then
+  if landing_lux < on_threshold then
     commandArray['Landing Light'] = 'On'
   end
 end

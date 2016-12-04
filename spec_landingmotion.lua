@@ -2,7 +2,10 @@ require 'domotest'
 require 'busted.runner'()
 
 local script_name = 'script_device_landingmotion.lua'
-local commands = {}
+local on_threshold = '10'
+local commands = {
+  uservariables = { ['Landing Light On Lux'] = on_threshold }
+}
 
 describe('When neither BOTTOM STAIRS SENSOR nor LANDING SENSOR reports a change', function()
 
@@ -48,11 +51,24 @@ describe('When the LANDING LIGHT', function()
           describe('has MOTION', function()
             commands['otherdevices']['Landing Motion'] = 'On'
 
-            it('turn ON the LANDING LIGHT', function()
-              commandArray = domotest(script_name, commands)
-              assert.are.same({
-                ['Landing Light'] = 'On'
-              }, commandArray)
+            describe('and the LANDING LUX is HIGH', function()
+              commands['otherdevices_svalues']['Landing Lux'] = 11
+
+              it('nothing happens', function()
+                commandArray = domotest(script_name, commands)
+                assert.are.same({}, commandArray)
+              end)
+            end)
+
+            describe('and the LANDING LUX is LOW', function()
+              commands['otherdevices_svalues']['Landing Lux'] = 9
+
+              it('turn ON the LANDING LIGHT', function()
+                commandArray = domotest(script_name, commands)
+                assert.are.same({
+                  ['Landing Light'] = 'On'
+                }, commandArray)
+              end)
             end)
           end)
         end)
