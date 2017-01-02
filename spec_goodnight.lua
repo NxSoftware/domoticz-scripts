@@ -48,7 +48,7 @@ describe('When the BEDTIME device', function()
       assert.is.equal('Off AFTER 20', commandArray[4]['Dining Area Light'])
     end)
 
-    it('set the LANDING LIGHT to 50%', function()
+    it('immediately set the LANDING LIGHT to 50%', function()
       assert.is.equal('Set Level 50', commandArray[5]['Landing Light'])
     end)
 
@@ -56,12 +56,16 @@ describe('When the BEDTIME device', function()
       assert.is.equal('Off AFTER 60', commandArray[6]['Landing Light'])
     end)
 
-    it('set the TOP LANDING LIGHT to 50%', function()
+    it('immediately set the TOP LANDING LIGHT to 50%', function()
       assert.is.equal('Set Level 50', commandArray[7]['Top Landing Light'])
     end)
 
     it('turn off the TOP LANDING LIGHT after 60 seconds', function()
       assert.is.equal('Off AFTER 60', commandArray[8]['Top Landing Light'])
+    end)
+    
+    it('immediately TURN ON the BED LIGHTS', function()
+      assert.is.equal('On', commandArray[9]['Bed Lights'])
     end)
 
   end)

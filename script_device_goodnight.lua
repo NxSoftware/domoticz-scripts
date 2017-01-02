@@ -8,6 +8,7 @@ local living_room_light_id = 'Living Room Light'
 local dining_area_light_id = 'Dining Area Light'
 local landing_light_id = 'Landing Light'
 local top_landing_light_id = 'Top Landing Light'
+local bed_lights_id = 'Bed Lights'
 
 commandArray[1] = {
   [living_room_light_id] = 'Set Level 15'
@@ -32,6 +33,9 @@ commandArray[7] = {
 }
 commandArray[8] = {
   [top_landing_light_id] = 'Off AFTER 60'
+}
+commandArray[9] = {
+  [bed_lights_id] = 'On'
 }
 
 return commandArray
