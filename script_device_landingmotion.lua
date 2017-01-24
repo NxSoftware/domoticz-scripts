@@ -1,20 +1,16 @@
 commandArray = {}
 
-if devicechanged['Bottom Stairs Motion'] == nil
-and devicechanged['Landing Motion'] == nil then
-  return commandArray
-end
+local bottom_stairs_motion = devicechanged['Bottom Stairs Motion']
+local landing_motion = devicechanged['Landing Motion']
 
-local function get_current_motion(id)
-  return devicechanged[id] or otherdevices[id]
+if bottom_stairs_motion == nil and landing_motion == nil then
+  return commandArray
 end
 
 local function landing_light_is_on()
   return tonumber(otherdevices_svalues['Landing Light']) > 0
 end
 
-local bottom_stairs_motion = get_current_motion('Bottom Stairs Motion')
-local landing_motion = get_current_motion('Landing Motion')
 local landing_lux = tonumber(otherdevices_svalues['Landing Lux'])
 local on_threshold = tonumber(uservariables['Landing Light On Lux'] or 0)
 
