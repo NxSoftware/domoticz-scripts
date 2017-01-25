@@ -1,7 +1,10 @@
 commandArray = {}
 
-local bottom_stairs_motion = devicechanged['Bottom Stairs Motion']
-local landing_motion = devicechanged['Landing Motion']
+local bottom_stairs_sensor_id = 'Bottom Stairs Motion'
+local landing_sensor_id = 'Landing Motion'
+
+local bottom_stairs_motion = devicechanged[bottom_stairs_sensor_id]
+local landing_motion = devicechanged[landing_sensor_id]
 
 if bottom_stairs_motion == nil and landing_motion == nil then
   return commandArray
@@ -18,9 +21,13 @@ local function there_is_motion()
   return bottom_stairs_motion == 'On' or landing_motion == 'On'
 end
 
+local function there_is_no_motion() 
+  return (bottom_stairs_motion or otherdevices[bottom_stairs_sensor_id]) == 'Off'
+  and (landing_motion or otherdevices[landing_sensor_id]) == 'Off'
+end
+
 if landing_light_is_on() then
-  if bottom_stairs_motion == 'Off'
-  and landing_motion == 'Off' then
+  if there_is_no_motion() then
     commandArray['Landing Light'] = 'Off'
   end
 elseif there_is_motion() then
