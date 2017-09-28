@@ -11,7 +11,7 @@ local top_landing_light_id = 'Top Landing Light'
 local bed_lights_id = 'Bed Lights'
 
 commandArray[1] = {
-  [living_room_light_id] = 'Set Level 15'
+  [living_room_light_id] = 'Set Level 30'
 }
 commandArray[2] = {
   [dining_area_light_id] = 'Set Level 20'

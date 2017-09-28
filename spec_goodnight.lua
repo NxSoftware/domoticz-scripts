@@ -32,8 +32,8 @@ describe('When the BEDTIME device', function()
       ['devicechanged'] = { ['Bedtime'] = 'On' }
     })
 
-    it('immediately set the LIVING ROOM LIGHT brightness to 15%', function()
-      assert.is.equal('Set Level 15', commandArray[1]['Living Room Light'])
+    it('immediately set the LIVING ROOM LIGHT brightness to 30%', function()
+      assert.is.equal('Set Level 30', commandArray[1]['Living Room Light'])
     end)
 
     it('immediately set the DINING AREA LIGHT brightness to 20%', function()
