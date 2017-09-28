@@ -14,28 +14,28 @@ commandArray[1] = {
   [living_room_light_id] = 'Set Level 15'
 }
 commandArray[2] = {
-  [living_room_light_id] = 'Off AFTER 20'
-}
-commandArray[3] = {
   [dining_area_light_id] = 'Set Level 20'
 }
-commandArray[4] = {
-  [dining_area_light_id] = 'Off AFTER 20'
-}
-commandArray[5] = {
+commandArray[3] = {
   [landing_light_id] = 'Set Level 50'
 }
-commandArray[6] = {
-  [landing_light_id] = 'Off AFTER 60'
-}
-commandArray[7] = {
+commandArray[4] = {
   [top_landing_light_id] = 'Set Level 50'
 }
+commandArray[5] = {
+  [bed_lights_id] = 'On'
+}
+commandArray[6] = {
+  [living_room_light_id] = 'Off AFTER 20'
+}
+commandArray[7] = {
+  [dining_area_light_id] = 'Off AFTER 20'
+}
 commandArray[8] = {
-  [top_landing_light_id] = 'Off AFTER 60'
+  [landing_light_id] = 'Off AFTER 60'
 }
 commandArray[9] = {
-  [bed_lights_id] = 'On'
+  [top_landing_light_id] = 'Off AFTER 60'
 }
 
 return commandArray

@@ -36,38 +36,38 @@ describe('When the BEDTIME device', function()
       assert.is.equal('Set Level 15', commandArray[1]['Living Room Light'])
     end)
 
-    it('turn off the LIVING ROOM LIGHT after 20 seconds', function()
-      assert.is.equal('Off AFTER 20', commandArray[2]['Living Room Light'])
-    end)
-
     it('immediately set the DINING AREA LIGHT brightness to 20%', function()
-      assert.is.equal('Set Level 20', commandArray[3]['Dining Area Light'])
-    end)
-
-    it('turn off the DINING AREA LIGHT after 20 seconds', function()
-      assert.is.equal('Off AFTER 20', commandArray[4]['Dining Area Light'])
+      assert.is.equal('Set Level 20', commandArray[2]['Dining Area Light'])
     end)
 
     it('immediately set the LANDING LIGHT to 50%', function()
-      assert.is.equal('Set Level 50', commandArray[5]['Landing Light'])
-    end)
-
-    it('turn off the LANDING LIGHT after 60 seconds', function()
-      assert.is.equal('Off AFTER 60', commandArray[6]['Landing Light'])
+      assert.is.equal('Set Level 50', commandArray[3]['Landing Light'])
     end)
 
     it('immediately set the TOP LANDING LIGHT to 50%', function()
-      assert.is.equal('Set Level 50', commandArray[7]['Top Landing Light'])
+      assert.is.equal('Set Level 50', commandArray[4]['Top Landing Light'])
+    end)
+
+    it('immediately TURN ON the BED LIGHTS', function()
+      assert.is.equal('On', commandArray[5]['Bed Lights'])
+    end)
+
+    it('turn off the LIVING ROOM LIGHT after 20 seconds', function()
+      assert.is.equal('Off AFTER 20', commandArray[6]['Living Room Light'])
+    end)
+
+    it('turn off the DINING AREA LIGHT after 20 seconds', function()
+      assert.is.equal('Off AFTER 20', commandArray[7]['Dining Area Light'])
+    end)
+
+    it('turn off the LANDING LIGHT after 60 seconds', function()
+      assert.is.equal('Off AFTER 60', commandArray[8]['Landing Light'])
     end)
 
     it('turn off the TOP LANDING LIGHT after 60 seconds', function()
-      assert.is.equal('Off AFTER 60', commandArray[8]['Top Landing Light'])
+      assert.is.equal('Off AFTER 60', commandArray[9]['Top Landing Light'])
     end)
     
-    it('immediately TURN ON the BED LIGHTS', function()
-      assert.is.equal('On', commandArray[9]['Bed Lights'])
-    end)
-
   end)
 
 end)
