@@ -6,6 +6,7 @@ end
 
 local living_room_light_id = 'Living Room Light'
 local dining_area_light_id = 'Dining Area Light'
+local hall_light_id = 'Hall Light'
 local landing_light_id = 'Landing Light'
 local top_landing_light_id = 'Top Landing Light'
 local bed_lights_id = 'Bed Lights'
@@ -32,9 +33,12 @@ commandArray[7] = {
   [dining_area_light_id] = 'Off AFTER 20'
 }
 commandArray[8] = {
-  [landing_light_id] = 'Off AFTER 60'
+  [hall_light_id] = 'Off AFTER 20'
 }
 commandArray[9] = {
+  [landing_light_id] = 'Off AFTER 60'
+}
+commandArray[10] = {
   [top_landing_light_id] = 'Off AFTER 60'
 }
 
